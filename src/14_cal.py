@@ -22,3 +22,20 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+args = sys.argv[1:]
+def cal(month=None, year=None, *args):
+  if(month != None):
+    month = int(month)
+    if(year == None):
+      year = int(datetime.today().strftime("%Y"))
+    else:
+      year = int(year)
+    print(calendar.monthcalendar(year, month))
+  else:
+    month = int(datetime.today().strftime("%m"))
+    year = int(datetime.today().strftime("%Y"))
+    print(calendar.monthcalendar(year, month))
+    print('Usage: py 14_cal.py month [year]')
+
+cal(*args)
